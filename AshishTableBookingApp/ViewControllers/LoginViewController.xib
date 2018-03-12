@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="AshishTableBookingApp" customModuleProvider="target">
+            <connections>
+                <outlet property="label" destination="xb1-hc-UNO" id="4kN-On-cvU"/>
+                <outlet property="receptionistLoginButton" destination="mGS-TX-hrO" id="dFH-Vj-Wgw"/>
+                <outlet property="textField" destination="rcJ-BN-anV" id="S1L-w7-g3Q"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rcJ-BN-anV">
+                    <rect key="frame" x="20" y="100" width="335" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mGS-TX-hrO">
+                    <rect key="frame" x="20" y="155" width="167.5" height="30"/>
+                    <state key="normal" title="Receptionist Login"/>
+                    <connections>
+                        <action selector="receptionistBtnAction:" destination="-1" eventType="touchUpInside" id="Npu-LZ-SpH"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D0z-d1-Ffi">
+                    <rect key="frame" x="187.5" y="155" width="167.5" height="30"/>
+                    <state key="normal" title="Customer Login"/>
+                    <connections>
+                        <action selector="customerLoginButtonAction:" destination="-1" eventType="touchUpInside" id="c8Y-O0-leq"/>
+                    </connections>
+                </button>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xb1-hc-UNO">
+                    <rect key="frame" x="15" y="100" width="345" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="rcJ-BN-anV" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="80" id="4Wz-Cx-5Hv"/>
+                <constraint firstItem="mGS-TX-hrO" firstAttribute="top" secondItem="rcJ-BN-anV" secondAttribute="bottom" constant="25" id="Faz-q0-ccs"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xb1-hc-UNO" secondAttribute="trailing" constant="15" id="GCe-D3-KRG"/>
+                <constraint firstItem="rcJ-BN-anV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Gyf-6e-93h"/>
+                <constraint firstItem="xb1-hc-UNO" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="80" id="H27-A9-IHc"/>
+                <constraint firstItem="mGS-TX-hrO" firstAttribute="leading" secondItem="rcJ-BN-anV" secondAttribute="leading" id="N0a-4o-wON"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rcJ-BN-anV" secondAttribute="trailing" constant="20" id="ODi-S7-WwS"/>
+                <constraint firstItem="D0z-d1-Ffi" firstAttribute="width" secondItem="mGS-TX-hrO" secondAttribute="width" id="SZn-RV-FUT"/>
+                <constraint firstItem="rcJ-BN-anV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Uwi-i1-8v0"/>
+                <constraint firstItem="xb1-hc-UNO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="c6s-SN-AqV"/>
+                <constraint firstItem="D0z-d1-Ffi" firstAttribute="trailing" secondItem="rcJ-BN-anV" secondAttribute="trailing" id="fHL-ns-k88"/>
+                <constraint firstItem="D0z-d1-Ffi" firstAttribute="top" secondItem="mGS-TX-hrO" secondAttribute="top" id="oaC-ck-6YH"/>
+                <constraint firstItem="mGS-TX-hrO" firstAttribute="width" secondItem="rcJ-BN-anV" secondAttribute="width" multiplier="0.5" id="ssq-TW-6tm"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+</document>
