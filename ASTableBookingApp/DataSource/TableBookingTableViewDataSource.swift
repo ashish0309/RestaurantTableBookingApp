@@ -53,18 +53,17 @@ struct BookingTableRowModel {
         self.cellStyle = cellStyle
     }
     init() {
-        text = nil
-        detailText = nil
+        
     }
 }
 
 struct TableBookingTableViewDataSource {
     var headerTitle: String {
-        guard let _ = ASFirebaseDataSource.database.waitingCustomers else {
-            return ""
+        var title = ""
+        if ASFirebaseDataSource.database.waitingCustomers == nil {
+            return title
         }
         let vacantTablesCount = ASFirebaseDataSource.database.vacantTablesCount()
-        var title: String!
         if let totalTables = ASFirebaseDataSource.database.totalTableCount, vacantTablesCount == totalTables {
             title = "All Tables are free!"
         }
@@ -78,7 +77,7 @@ struct TableBookingTableViewDataSource {
     }
     
     func bookingViewModelFor(section: Int) -> BookingTableRowModel {
-       var model = BookingTableRowModel()
+        var model = BookingTableRowModel()
         if section == TableRows.WaitingCustomers.rawValue {
             model.cellStyle = .value1
             model.cellIdentifier = TableBookingViewController.waitingCustomerCellIdentifier
@@ -111,3 +110,4 @@ struct TableBookingTableViewDataSource {
         return 50
     }
 }
+

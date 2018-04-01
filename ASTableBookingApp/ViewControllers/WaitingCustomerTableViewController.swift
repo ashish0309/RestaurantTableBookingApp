@@ -13,21 +13,27 @@ class WaitingCustomerTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateCountOfVacantTables()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.waitingCustomersDataChangedNotification), name: Notification.Name(ASFirebaseDataSource.WaitingCustomersModified), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.totalTablesChangedNotification), name: Notification.Name(ASFirebaseDataSource.TotalTablesChanged), object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.waitingCustomersDataChangedNotification),
+                                               name: Notification.Name(ASFirebaseDataSource.WaitingCustomersModified),
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.totalTablesChangedNotification),
+                                               name: Notification.Name(ASFirebaseDataSource.TotalTablesChanged),
+                                               object: nil)
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ASFirebaseDataSource.database.waitingCustomers!.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let waitingCustomer = ASFirebaseDataSource.database.waitingCustomers![indexPath.row]
         var cell = tableView.dequeueReusableCell(withIdentifier: defaultCellIdentifier)
@@ -44,7 +50,7 @@ class WaitingCustomerTableViewController: UITableViewController {
         }
         return cell!
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.row == 0 && ASFirebaseDataSource.database.vacantTablesCount() > 0 else {
             return
@@ -79,3 +85,4 @@ class WaitingCustomerTableViewController: UITableViewController {
         
     }
 }
+

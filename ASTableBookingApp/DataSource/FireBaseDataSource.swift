@@ -39,27 +39,32 @@ class ASFirebaseDataSource {
         })
         
         waitingQueueRef.observe(.childRemoved, with: { [weak self] (snapshot) -> Void in
-            guard let changedCustomer = WaitingCustomers(snapshot: snapshot) else { return }
+            guard let changedCustomer = WaitingCustomers(snapshot: snapshot) else
+            {
+                return
+            }
             if let index = self?.findIndexOfWaitingCustomer(customer: changedCustomer) {
                 var waitingCustomerCopy = self?.waitingCustomers
                 waitingCustomerCopy?.remove(at: index)
                 self?.waitingCustomers = waitingCustomerCopy
                 NotificationCenter.default.post(name: Notification.Name(ASFirebaseDataSource.WaitingCustomersModified), object: nil)
-                NotificationCenter.default.post(name: Notification.Name(ASFirebaseDataSource.CustomerAssignedTable), object:nil, userInfo: [Utilities.phonenumber: changedCustomer.phoneNumber])
+                NotificationCenter.default.post(name: Notification.Name(ASFirebaseDataSource.CustomerAssignedTable),
+                                                object:nil,
+                                                userInfo: [Utilities.phonenumber: changedCustomer.phoneNumber])
             }
         })
         
         let inventoryRef = ref.child("Inventory")
         inventoryRef.observe(.value, with: { [weak self] (snapshot) in
-            if let dSnapShot = snapshot.value as? [String:Any] {
-                let newTotalTablesCount = dSnapShot["TotalTables"] as? Int
-                let newOccupiedTablesCount = dSnapShot["OccupiedTables"] as? Int
-                if let newTotalTablesCount = newTotalTablesCount, let newOccupiedTablesCount = newOccupiedTablesCount {
-                        self?.totalTableCount = newTotalTablesCount
-                        self?.occupiedTableCount = newOccupiedTablesCount
-                        NotificationCenter.default.post(name: Notification.Name(ASFirebaseDataSource.TotalTablesChanged), object: nil)
-                }
+            guard let dSnapShot = snapshot.value as? [String:Any],
+                let newTotalTablesCount = dSnapShot["TotalTables"] as? Int,
+                let newOccupiedTablesCount = dSnapShot["OccupiedTables"] as? Int else {
+                    return
             }
+            self?.totalTableCount = newTotalTablesCount
+            self?.occupiedTableCount = newOccupiedTablesCount
+            NotificationCenter.default.post(name: Notification.Name(ASFirebaseDataSource.TotalTablesChanged),
+                                            object: nil)
         })
         
         fetchInitialRequiredData()
@@ -73,14 +78,17 @@ class ASFirebaseDataSource {
     func addNewCustomerInWaitingQueue(name: String, phoneNumber: String,  state: String) {
         let key = ref.child("waiting_queue").childByAutoId().key
         let new_queue_item = ["name": name,
-                    "phoneNumber": phoneNumber,
-                    "state": state]
+                              "phoneNumber": phoneNumber,
+                              "state": state]
         let childUpdates = ["/waiting_queue/\(key)": new_queue_item]
         ref.updateChildValues(childUpdates)
         if var customersCopy = waitingCustomers {
-            customersCopy.append(WaitingCustomers(phoneNumber: phoneNumber, name: name, state: .Waiting, key: key))
+            customersCopy.append(WaitingCustomers(phoneNumber: phoneNumber,
+                                                  name: name,
+                                                  state: .Waiting, key: key))
             waitingCustomers = customersCopy
-            NotificationCenter.default.post(name: Notification.Name(ASFirebaseDataSource.WaitingCustomersModified), object: nil)
+            NotificationCenter.default.post(name: Notification.Name(ASFirebaseDataSource.WaitingCustomersModified),
+                                            object: nil)
         }
     }
     
@@ -88,9 +96,9 @@ class ASFirebaseDataSource {
         let inventoryRef = ref.child("Inventory")
         inventoryRef.observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
             if let dSnapShot = snapshot.value as? [String:Any] {
-               self?.totalTableCount = dSnapShot["TotalTables"] as? Int
+                self?.totalTableCount = dSnapShot["TotalTables"] as? Int
                 self?.occupiedTableCount = dSnapShot["OccupiedTables"] as? Int
-               NotificationCenter.default.post(name: Notification.Name(ASFirebaseDataSource.InitialDataFetch), object: nil, userInfo: [ASFirebaseDataSource.AllfetchedKey: self?.waitingCustomers != nil])
+                NotificationCenter.default.post(name: Notification.Name(ASFirebaseDataSource.InitialDataFetch), object: nil, userInfo: [ASFirebaseDataSource.AllfetchedKey: self?.waitingCustomers != nil])
             }
         }) { (error) in
             NotificationCenter.default.post(name: Notification.Name(ASFirebaseDataSource.InitialDataFetch), object: nil, userInfo: ["error": true])
@@ -99,20 +107,25 @@ class ASFirebaseDataSource {
     
     
     private func getAllWaitingCustomers() {
-        var wCustomers = [WaitingCustomers]()
+        var waitingCustomers = [WaitingCustomers]()
         waitingQueueRef.observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
             for childSnapshot in snapshot.children {
-                if let dSnapShot = childSnapshot as? DataSnapshot {
-                    let waitingCustomer = WaitingCustomers(snapshot: dSnapShot)
-                    if let wCustomer = waitingCustomer, wCustomer.state == .Waiting{
-                        wCustomers.append(wCustomer)
-                    }
+                guard let dSnapShot = childSnapshot as? DataSnapshot,
+                    let waitingCustomer = WaitingCustomers(snapshot: dSnapShot) else {
+                        continue
+                }
+                if waitingCustomer.state == .Waiting {
+                    waitingCustomers.append(waitingCustomer)
                 }
             }
-            self?.waitingCustomers = wCustomers
-            NotificationCenter.default.post(name: Notification.Name(ASFirebaseDataSource.InitialDataFetch), object: nil, userInfo: [ASFirebaseDataSource.AllfetchedKey: self?.totalTableCount != nil])
+            self?.waitingCustomers = waitingCustomers
+            NotificationCenter.default.post(name: Notification.Name(ASFirebaseDataSource.InitialDataFetch),
+                                            object: nil,
+                                            userInfo: [ASFirebaseDataSource.AllfetchedKey: self?.totalTableCount != nil])
         }) { (error) in
-            NotificationCenter.default.post(name: Notification.Name(ASFirebaseDataSource.InitialDataFetch), object: nil, userInfo: ["error": true])
+            NotificationCenter.default.post(name: Notification.Name(ASFirebaseDataSource.InitialDataFetch),
+                                            object: nil,
+                                            userInfo: ["error": true])
         }
     }
     
@@ -132,10 +145,11 @@ class ASFirebaseDataSource {
     }
     
     private func findIndexOfWaitingCustomer(customer: WaitingCustomers) -> Int? {
-        if let waitingCustomers = waitingCustomers {
-            if let index:Int = waitingCustomers.index(where: {$0.key == customer.key}) {
-                return index
-            }
+        guard let waitingCustomers = waitingCustomers else {
+            return nil
+        }
+        if let index:Int = waitingCustomers.index(where: {$0.key == customer.key}) {
+            return index
         }
         return nil
     }
@@ -148,22 +162,23 @@ class ASFirebaseDataSource {
     }
     
     func vacantTablesCount() -> Int {
-        if let totalTables = totalTableCount, let occpTables = occupiedTableCount {
-            return totalTables - occpTables >= 0 ? totalTables - occpTables : 0
+        guard let totalTables = totalTableCount, let occpTables = occupiedTableCount else {
+            return 0
         }
-        return 0
+        return totalTables - occpTables >= 0 ? totalTables - occpTables : 0
     }
     
     func getSearchedCustomers(searchedtext: String) -> [WaitingCustomers] {
         var searchedCustomers = [WaitingCustomers]()
-        if let wCustomers = waitingCustomers {
-            for i in 0..<wCustomers.count {
-                var customer = wCustomers[i]
-                let lowercasedname = customer.customerName.lowercased()
-                if lowercasedname.hasPrefix(searchedtext) || customer.phoneNumber.hasPrefix(searchedtext) {
-                    customer.waitingIndex = i
-                    searchedCustomers.append(customer)
-                }
+        guard let waitingCustomers = waitingCustomers else {
+            return searchedCustomers
+        }
+        for i in 0..<waitingCustomers.count {
+            var customer = waitingCustomers[i]
+            let lowercasedname = customer.customerName.lowercased()
+            if lowercasedname.hasPrefix(searchedtext) || customer.phoneNumber.hasPrefix(searchedtext) {
+                customer.waitingIndex = i
+                searchedCustomers.append(customer)
             }
         }
         return searchedCustomers
@@ -171,7 +186,7 @@ class ASFirebaseDataSource {
     
     func checkPhoneNumberPresentForNewCustomerInWaitingQueue(phoneNo: String) -> Bool {
         if let waitingCustomers = waitingCustomers {
-            if let _:Int = waitingCustomers.index(where: {$0.phoneNumber == phoneNo && $0.state == TableState.Waiting}) {
+            if  waitingCustomers.index(where: {$0.phoneNumber == phoneNo && $0.state == TableState.Waiting}) != nil {
                 return true
             }
         }
@@ -186,7 +201,16 @@ class ASFirebaseDataSource {
         return nil
     }
     
+    func allTablesOccupied() -> Bool {
+        guard let occupiedTableCount = occupiedTableCount,
+            let totalTableCount = totalTableCount else {
+                return false
+        }
+        return occupiedTableCount == totalTableCount
+    }
+    
     deinit {
         ref.removeAllObservers()
     }
 }
+

@@ -43,24 +43,26 @@ class SearchWaitingCustomersViewController: UITableViewController, UISearchBarDe
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: defaultCellIdentifier)
+        var cell: UITableViewCell!
+        cell = tableView.dequeueReusableCell(withIdentifier: defaultCellIdentifier)
         if cell == nil {
             cell = UITableViewCell(style: .value1, reuseIdentifier: defaultCellIdentifier)
         }
         if searchedCustomers.count == 0 {
-            cell!.textLabel?.text = "Searched returned 0 results"
-            cell!.detailTextLabel?.text =  nil
+            cell.textLabel?.text = "Searched returned 0 results"
+            cell.detailTextLabel?.text =  nil
             return cell!
         }
         let waitingCustomer = searchedCustomers[indexPath.row]
-        cell!.textLabel?.attributedText = Utilities.getStyledStringFor(name: waitingCustomer.customerName, phoneNumber: waitingCustomer.phoneNumber)
+        cell.textLabel?.attributedText = Utilities.getStyledStringFor(name: waitingCustomer.customerName,
+                                                                      phoneNumber: waitingCustomer.phoneNumber)
         if var index = waitingCustomer.waitingIndex {
             index += 1
-            cell!.detailTextLabel?.text =  index.ordinal
+            cell.detailTextLabel?.text =  index.ordinal
         }
-        return cell!
+        return cell
     }
-
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchedCustomers.count > 0 {
             searchedCustomers = []
@@ -73,12 +75,12 @@ class SearchWaitingCustomersViewController: UITableViewController, UISearchBarDe
             searchedCustomers = ASFirebaseDataSource.database.getSearchedCustomers(searchedtext: searchedText)
             searchBar.resignFirstResponder()
             tableView.reloadData()
-            
         }
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self)
+        
     }
-
+    
 }
+

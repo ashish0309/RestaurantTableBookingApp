@@ -37,14 +37,13 @@ class LoginViewController: UIViewController {
     
     @IBAction func customerLoginButtonAction(_ sender: Any) {
         activityIndicator.startAnimating()
-        if let phoneText = textField.text {
-            if phoneText.count == 10 {
-                createUserInFirebase(isCustomerLogin: true)
-            }
-            else {
-                activityIndicator.stopAnimating()
-                showPhoneNumberRequiredAlert()
-            }
+        guard let phoneText = textField.text else {
+            activityIndicator.stopAnimating()
+            showPhoneNumberRequiredAlert()
+            return
+        }
+        if phoneText.count == 10 {
+            createUserInFirebase(isCustomerLogin: true)
         }
         else {
             activityIndicator.stopAnimating()
@@ -57,7 +56,9 @@ class LoginViewController: UIViewController {
             self?.activityIndicator.stopAnimating()
             if error != nil {
                 let action = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil)
-                Utilities.showAlert(title: "Sign up failed", message: error!.localizedDescription, actions: [action], presentingController: self)
+                Utilities.showAlert(title: "Sign up failed",
+                                    message: error!.localizedDescription,
+                                    actions: [action], presentingController: self)
                 return
             }
             let _ = ASFirebaseDataSource.database
@@ -80,7 +81,10 @@ class LoginViewController: UIViewController {
     
     func showPhoneNumberRequiredAlert() {
         let action = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil)
-        Utilities.showAlert(title: "Phone Number is required", message: "Please enter a valid 10 digit phone number", actions: [action], presentingController: self)
+        Utilities.showAlert(title: "Phone Number is required",
+                            message: "Please enter a valid 10 digit phone number",
+                            actions: [action], presentingController: self)
     }
     
 }
+

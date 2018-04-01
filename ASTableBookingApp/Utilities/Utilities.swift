@@ -11,14 +11,14 @@ import Firebase
 import UserNotifications
 
 class Utilities {
-    
     static let receptionist = "receptionist"
     static let customer = "customer"
     static let usertype = "usertype"
     static let phonenumber = "phonenumber"
     static let userdata = "userdata"
     static let assignedtableText = "You have been assigned a table"
-    class func showAlert(title: String, message: String, actions: [UIAlertAction], presentingController: UIViewController?) {
+    
+    static func showAlert(title: String, message: String, actions: [UIAlertAction], presentingController: UIViewController?) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         for action in actions {
             alertController.addAction(action)
@@ -26,7 +26,7 @@ class Utilities {
         presentingController?.present(alertController, animated: true, completion: nil)
     }
     
-    class func getStyledStringFor(name: String, phoneNumber: String) -> NSMutableAttributedString {
+    static func getStyledStringFor(name: String, phoneNumber: String) -> NSMutableAttributedString {
         let nameString: NSMutableAttributedString = NSMutableAttributedString(string: name)
         nameString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.black, range: NSMakeRange(0, nameString.length))
         let phoneString: NSMutableAttributedString = NSMutableAttributedString(string:  String(format: " %@", phoneNumber))
@@ -35,7 +35,7 @@ class Utilities {
         return nameString
     }
     
-    class func getCustomerWaitTime() -> String? {
+    static func getCustomerWaitTime() -> String? {
         let userdata = UserDefaults.standard.value(forKey: Utilities.userdata)
         if let user = userdata as? Dictionary<String, String> {
             let phoneNo = user[self.phonenumber]
@@ -46,7 +46,7 @@ class Utilities {
         return nil
     }
     
-    class func isCustomerAssignedTableHasUserPhoneNo(phoneNumber: String) -> Bool {
+    static func isCustomerAssignedTableHasUserPhoneNo(phoneNumber: String) -> Bool {
         let userdata = UserDefaults.standard.value(forKey: Utilities.userdata)
         if let user = userdata as? Dictionary<String, String> {
             let phoneNo = user[self.phonenumber]
@@ -77,3 +77,4 @@ extension Int {
     }
     
 }
+

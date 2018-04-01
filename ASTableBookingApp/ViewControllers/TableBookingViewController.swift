@@ -46,9 +46,18 @@ class TableBookingViewController: UIViewController, UITableViewDelegate, UITable
         activityIndicator.backgroundColor = UIColor.white
         activityIndicator.frame = view.bounds
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.initialDataFetchNotification(notification:)), name: Notification.Name(ASFirebaseDataSource.InitialDataFetch), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.waitingCustomersDataChangedNotification), name: Notification.Name(ASFirebaseDataSource.WaitingCustomersModified), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.totalTablesChangedNotification), name: Notification.Name(ASFirebaseDataSource.TotalTablesChanged), object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.initialDataFetchNotification(notification:)),
+                                               name: Notification.Name(ASFirebaseDataSource.InitialDataFetch),
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.waitingCustomersDataChangedNotification),
+                                               name: Notification.Name(ASFirebaseDataSource.WaitingCustomersModified),
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.totalTablesChangedNotification),
+                                               name: Notification.Name(ASFirebaseDataSource.TotalTablesChanged),
+                                               object: nil)
         
     }
     
@@ -62,7 +71,7 @@ class TableBookingViewController: UIViewController, UITableViewDelegate, UITable
         super.viewWillDisappear(animated)
         navigationItem.title = ""
     }
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
@@ -110,27 +119,36 @@ class TableBookingViewController: UIViewController, UITableViewDelegate, UITable
             ASFirebaseDataSource.database.updateOccupiedTable(value: 1)
         }
     }
-
+    
     @objc func initialDataFetchNotification(notification: Notification){
         if let notificationDict = notification.userInfo as? [String:Any] {
             if let allFetched = notificationDict[ASFirebaseDataSource.AllfetchedKey] as? Bool,  allFetched {
                 activityIndicator.stopAnimating()
                 updateCountOfVacantTables()
-                tableView.reloadData()
+                reloadTableView()
             }
         }
     }
     
     @objc func waitingCustomersDataChangedNotification(notification: Notification){
         updateCountOfVacantTables()
-        tableView.reloadData()
+        reloadTableView()
     }
     
     @objc func totalTablesChangedNotification(notification: Notification){
         updateCountOfVacantTables()
-        tableView.reloadData()
+        reloadTableView()
     }
     
+    func reloadTableView() {
+        if ASFirebaseDataSource.database.allTablesOccupied() {
+            tableView.tableHeaderView = bookingView
+        }
+        else {
+            tableView.tableHeaderView = nil
+        }
+        tableView.reloadData()
+    }
     func updateCountOfVacantTables() {
         navigationItem.title = tableDataSource.headerTitle
         //needed to refresh the title

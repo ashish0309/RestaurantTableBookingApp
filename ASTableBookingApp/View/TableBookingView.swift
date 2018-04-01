@@ -65,17 +65,23 @@ class TableBookingView: UIView{
     
     override func layoutSubviews() {
         let margin: CGFloat = 15
-        nameField.frame = CGRect(x: margin, y: margin, width: bounds.width - 2*margin, height: 35)
+        nameField.frame = CGRect(x: margin, y: margin, width: bounds.width - 2 * margin, height: 35)
         phoneNumberField.frame = nameField.frame.offsetBy(dx: 0, dy: 50)
-        bookButton.frame = CGRect(x: margin, y: phoneNumberField.frame.maxY + 15, width: bounds.width - 2*margin, height: 40)
+        bookButton.frame = CGRect(x: margin, y: phoneNumberField.frame.maxY + 15, width: bounds.width - 2 * margin, height: 40)
         bottomSeparator.frame = CGRect(x: 0, y: bounds.height - 1, width: bounds.width, height: 1)
     }
     
     @objc func enableDisableAddCustomersButton() {
         let vacantTablesCount = ASFirebaseDataSource.database.vacantTablesCount()
-        if let nameText = nameField.text, let enteredPhone = phoneNumberField.text,
-            enteredPhone.count == 10 && vacantTablesCount == 0
-                && nameText.count > 0 {
+        guard let nameText = nameField.text,
+            let enteredPhone = phoneNumberField.text else {
+                bookButtonEnabled = false
+                return
+        }
+        let phoneNoValidation = enteredPhone.count == 10
+        let vacantTablesValidation = vacantTablesCount == 0
+        let nameValidation = nameText.count > 0
+        if phoneNoValidation && vacantTablesValidation && nameValidation {
             bookButtonEnabled = true
         }
         else {
@@ -83,11 +89,14 @@ class TableBookingView: UIView{
         }
     }
     
-    func doneToolBar() -> UIToolbar{
+    func doneToolBar() -> UIToolbar {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
         let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let done = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(TableBookingView.dismissKeyboard(_:)))
+        let done = UIBarButtonItem(title: "Done",
+                                   style: UIBarButtonItemStyle.done,
+                                   target: self,
+                                   action: #selector(TableBookingView.dismissKeyboard(_:)))
         keyboardToolbar.items = [flexBarButton, done]
         return keyboardToolbar
     }
@@ -102,3 +111,4 @@ class TableBookingView: UIView{
     }
     
 }
+

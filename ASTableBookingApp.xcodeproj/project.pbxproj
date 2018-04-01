@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A7F7B1E2D30696B7F266DB9 /* Pods_AshishTableBookingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4A38C26379BE4A073B7DEC5 /* Pods_AshishTableBookingApp.framework */; };
+		601E351F20714D2700880E25 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 601E351E20714D2700880E25 /* Default-568h@2x.png */; };
 		602C9C15204AC93500556CC9 /* CustomerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602C9C14204AC93500556CC9 /* CustomerViewController.swift */; };
 		6035C17F2047F86C00754B8E /* TableBookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6035C17E2047F86C00754B8E /* TableBookingView.swift */; };
 		6035C1822048065100754B8E /* WaitingQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6035C1812048065100754B8E /* WaitingQueue.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		439CE4E3A8EB669DFBC1D86E /* Pods-AshishTableBookingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AshishTableBookingApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-AshishTableBookingApp/Pods-AshishTableBookingApp.release.xcconfig"; sourceTree = "<group>"; };
+		601E351E20714D2700880E25 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		602C9C14204AC93500556CC9 /* CustomerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerViewController.swift; sourceTree = "<group>"; };
 		6035C17E2047F86C00754B8E /* TableBookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableBookingView.swift; sourceTree = "<group>"; };
 		6035C1812048065100754B8E /* WaitingQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingQueue.swift; sourceTree = "<group>"; };
@@ -56,17 +58,17 @@
 		6035C18C2049500100754B8E /* SearchWaitingCustomersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWaitingCustomersViewController.swift; sourceTree = "<group>"; };
 		60394EB42049BBF2008150D6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		60394EB52049BBF2008150D6 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		605827BA2047111E00C05672 /* AshishTableBookingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AshishTableBookingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		605827BA2047111E00C05672 /* ASTableBookingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ASTableBookingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		605827BD2047111E00C05672 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		605827BF2047111E00C05672 /* TableBookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableBookingViewController.swift; sourceTree = "<group>"; };
 		605827C22047111E00C05672 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		605827C42047111E00C05672 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		605827C72047111E00C05672 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		605827C92047111E00C05672 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		605827CE2047111E00C05672 /* AshishTableBookingAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AshishTableBookingAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		605827CE2047111E00C05672 /* ASTableBookingAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ASTableBookingAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		605827D22047111E00C05672 /* AshishTableBookingAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AshishTableBookingAppTests.swift; sourceTree = "<group>"; };
 		605827D42047111E00C05672 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		605827D92047111E00C05672 /* AshishTableBookingAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AshishTableBookingAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		605827D92047111E00C05672 /* ASTableBookingAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ASTableBookingAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		605827DD2047111E00C05672 /* AshishTableBookingAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AshishTableBookingAppUITests.swift; sourceTree = "<group>"; };
 		605827DF2047111E00C05672 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		605827EB2047150300C05672 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -142,7 +144,8 @@
 		605827B12047111E00C05672 = {
 			isa = PBXGroup;
 			children = (
-				605827BC2047111E00C05672 /* AshishTableBookingApp */,
+				601E351E20714D2700880E25 /* Default-568h@2x.png */,
+				605827BC2047111E00C05672 /* ASTableBookingApp */,
 				605827D12047111E00C05672 /* AshishTableBookingAppTests */,
 				605827DC2047111E00C05672 /* AshishTableBookingAppUITests */,
 				605827BB2047111E00C05672 /* Products */,
@@ -154,14 +157,14 @@
 		605827BB2047111E00C05672 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				605827BA2047111E00C05672 /* AshishTableBookingApp.app */,
-				605827CE2047111E00C05672 /* AshishTableBookingAppTests.xctest */,
-				605827D92047111E00C05672 /* AshishTableBookingAppUITests.xctest */,
+				605827BA2047111E00C05672 /* ASTableBookingApp.app */,
+				605827CE2047111E00C05672 /* ASTableBookingAppTests.xctest */,
+				605827D92047111E00C05672 /* ASTableBookingAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		605827BC2047111E00C05672 /* AshishTableBookingApp */ = {
+		605827BC2047111E00C05672 /* ASTableBookingApp */ = {
 			isa = PBXGroup;
 			children = (
 				60D66931204B148E0012E61C /* View */,
@@ -176,7 +179,7 @@
 				605827EB2047150300C05672 /* GoogleService-Info.plist */,
 				605827C92047111E00C05672 /* Info.plist */,
 			);
-			path = AshishTableBookingApp;
+			path = ASTableBookingApp;
 			sourceTree = "<group>";
 		};
 		605827D12047111E00C05672 /* AshishTableBookingAppTests */ = {
@@ -225,9 +228,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		605827B92047111E00C05672 /* AshishTableBookingApp */ = {
+		605827B92047111E00C05672 /* ASTableBookingApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 605827E22047111E00C05672 /* Build configuration list for PBXNativeTarget "AshishTableBookingApp" */;
+			buildConfigurationList = 605827E22047111E00C05672 /* Build configuration list for PBXNativeTarget "ASTableBookingApp" */;
 			buildPhases = (
 				7E42EB1FA1BDEC2EE45693E0 /* [CP] Check Pods Manifest.lock */,
 				605827B62047111E00C05672 /* Sources */,
@@ -240,14 +243,14 @@
 			);
 			dependencies = (
 			);
-			name = AshishTableBookingApp;
+			name = ASTableBookingApp;
 			productName = AshishTableBookingApp;
-			productReference = 605827BA2047111E00C05672 /* AshishTableBookingApp.app */;
+			productReference = 605827BA2047111E00C05672 /* ASTableBookingApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		605827CD2047111E00C05672 /* AshishTableBookingAppTests */ = {
+		605827CD2047111E00C05672 /* ASTableBookingAppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 605827E52047111E00C05672 /* Build configuration list for PBXNativeTarget "AshishTableBookingAppTests" */;
+			buildConfigurationList = 605827E52047111E00C05672 /* Build configuration list for PBXNativeTarget "ASTableBookingAppTests" */;
 			buildPhases = (
 				605827CA2047111E00C05672 /* Sources */,
 				605827CB2047111E00C05672 /* Frameworks */,
@@ -258,14 +261,14 @@
 			dependencies = (
 				605827D02047111E00C05672 /* PBXTargetDependency */,
 			);
-			name = AshishTableBookingAppTests;
+			name = ASTableBookingAppTests;
 			productName = AshishTableBookingAppTests;
-			productReference = 605827CE2047111E00C05672 /* AshishTableBookingAppTests.xctest */;
+			productReference = 605827CE2047111E00C05672 /* ASTableBookingAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		605827D82047111E00C05672 /* AshishTableBookingAppUITests */ = {
+		605827D82047111E00C05672 /* ASTableBookingAppUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 605827E82047111E00C05672 /* Build configuration list for PBXNativeTarget "AshishTableBookingAppUITests" */;
+			buildConfigurationList = 605827E82047111E00C05672 /* Build configuration list for PBXNativeTarget "ASTableBookingAppUITests" */;
 			buildPhases = (
 				605827D52047111E00C05672 /* Sources */,
 				605827D62047111E00C05672 /* Frameworks */,
@@ -276,9 +279,9 @@
 			dependencies = (
 				605827DB2047111E00C05672 /* PBXTargetDependency */,
 			);
-			name = AshishTableBookingAppUITests;
+			name = ASTableBookingAppUITests;
 			productName = AshishTableBookingAppUITests;
-			productReference = 605827D92047111E00C05672 /* AshishTableBookingAppUITests.xctest */;
+			productReference = 605827D92047111E00C05672 /* ASTableBookingAppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -307,7 +310,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 605827B52047111E00C05672 /* Build configuration list for PBXProject "AshishTableBookingApp" */;
+			buildConfigurationList = 605827B52047111E00C05672 /* Build configuration list for PBXProject "ASTableBookingApp" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -320,9 +323,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				605827B92047111E00C05672 /* AshishTableBookingApp */,
-				605827CD2047111E00C05672 /* AshishTableBookingAppTests */,
-				605827D82047111E00C05672 /* AshishTableBookingAppUITests */,
+				605827B92047111E00C05672 /* ASTableBookingApp */,
+				605827CD2047111E00C05672 /* ASTableBookingAppTests */,
+				605827D82047111E00C05672 /* ASTableBookingAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -337,6 +340,7 @@
 				605827EC2047150400C05672 /* GoogleService-Info.plist in Resources */,
 				605827C52047111E00C05672 /* Assets.xcassets in Resources */,
 				605827C32047111E00C05672 /* Main.storyboard in Resources */,
+				601E351F20714D2700880E25 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,12 +460,12 @@
 /* Begin PBXTargetDependency section */
 		605827D02047111E00C05672 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 605827B92047111E00C05672 /* AshishTableBookingApp */;
+			target = 605827B92047111E00C05672 /* ASTableBookingApp */;
 			targetProxy = 605827CF2047111E00C05672 /* PBXContainerItemProxy */;
 		};
 		605827DB2047111E00C05672 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 605827B92047111E00C05672 /* AshishTableBookingApp */;
+			target = 605827B92047111E00C05672 /* ASTableBookingApp */;
 			targetProxy = 605827DA2047111E00C05672 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -600,13 +604,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R7CDRD8S2K;
-				INFOPLIST_FILE = AshishTableBookingApp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ASTableBookingApp/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashishsingh.ashishtablebooking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -617,13 +621,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R7CDRD8S2K;
-				INFOPLIST_FILE = AshishTableBookingApp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ASTableBookingApp/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashishsingh.ashishtablebooking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -640,7 +644,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AshishTableBookingApp.app/AshishTableBookingApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ASTableBookingApp.app/ASTableBookingApp";
 			};
 			name = Debug;
 		};
@@ -657,7 +661,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AshishTableBookingApp.app/AshishTableBookingApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ASTableBookingApp.app/ASTableBookingApp";
 			};
 			name = Release;
 		};
@@ -696,7 +700,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		605827B52047111E00C05672 /* Build configuration list for PBXProject "AshishTableBookingApp" */ = {
+		605827B52047111E00C05672 /* Build configuration list for PBXProject "ASTableBookingApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				605827E02047111E00C05672 /* Debug */,
@@ -705,7 +709,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		605827E22047111E00C05672 /* Build configuration list for PBXNativeTarget "AshishTableBookingApp" */ = {
+		605827E22047111E00C05672 /* Build configuration list for PBXNativeTarget "ASTableBookingApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				605827E32047111E00C05672 /* Debug */,
@@ -714,7 +718,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		605827E52047111E00C05672 /* Build configuration list for PBXNativeTarget "AshishTableBookingAppTests" */ = {
+		605827E52047111E00C05672 /* Build configuration list for PBXNativeTarget "ASTableBookingAppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				605827E62047111E00C05672 /* Debug */,
@@ -723,7 +727,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		605827E82047111E00C05672 /* Build configuration list for PBXNativeTarget "AshishTableBookingAppUITests" */ = {
+		605827E82047111E00C05672 /* Build configuration list for PBXNativeTarget "ASTableBookingAppUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				605827E92047111E00C05672 /* Debug */,
